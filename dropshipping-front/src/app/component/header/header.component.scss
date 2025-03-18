@@ -1,0 +1,37 @@
+.spacer {
+  flex: 1;
+}
+
+mat-toolbar {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  background-color:  #066fd1;
+
+  a {
+    color: white;
+    text-transform: uppercase;
+    margin-right: 10px;
+    font-weight: bold;
+    font-style: italic;
+    font-size-adjust: inherit;
+    &:hover{
+    background-color: black;
+    }
+  }
+
+
+  }
+  .cart-icon{
+    margin-left: 10px;
+
+    &:hover{
+      background-color: black;
+      }
+
+  }
+
+  button mat-icon{
+    color: white;
+
+}

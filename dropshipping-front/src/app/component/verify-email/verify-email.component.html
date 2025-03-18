@@ -1,0 +1,10 @@
+<div class="singIn_container">
+    <form [formGroup]="verifyemailForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Enter your Email Address" formControlName="email">
+        <mat-error *ngIf = "verifyemailForm.get('email').invalid">Email is required</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="verifyemailForm.invalid">Submit</button>
+    </form>  
+    </div>

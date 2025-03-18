@@ -1,0 +1,20 @@
+<div class="contact_container">
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <div class="contact-form">
+        <h1>Contact Us</h1>
+        <div class="name">
+          <label for="name">Name:</label>
+          <input type="text" id="name" formControlName="name" placeholder="Enter Your Name">
+        </div>
+        <div class="email">
+      <label  for="email">Email:</label>
+      <input type="text" id="email" formControlName="email" placeholder="Enter Your Email">
+    </div>
+    <div class="message">
+      <label for="message">Meesage:</label>
+      <textarea id="message" formControlName = "message" placeholder="Leave a message"></textarea>
+    </div>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </div>
+  </form>
+</div>

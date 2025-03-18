@@ -1,0 +1,52 @@
+<div class="cart-container">
+  <h2>Your Cart</h2>
+    <div class="cart-item" *ngFor="let item of cartItems">
+      <img class="cart-item-image" [src]="item.book.image" alt="{{ item.book.title }}" />
+      <div class="cart-item-details">
+        <h3>{{ item.book.title }}</h3>
+        <p><strong>Author:</strong> {{ item.book.author }}</p>
+        <p><strong>Price:</strong> {{ item.book.price | currency }}</p>
+        <div class="books">
+          <label for="books-{{ item.book.id }}"><strong>Books:</strong></label> 
+          <input
+            id="quantity-{{ item.book.id }}"
+            type="number"
+            [value]="item.quantity"
+            (input)="updateBooks(item.book.id, $event)"
+          />
+        </div>
+        <button (click)="removeBooks(item.book.id)">Remove Book</button>
+      </div>
+    </div>
+
+    <div class="cart-total">
+      <h3>Total: {{ totalPrice | currency }}</h3>
+      <button mat-raised-button color="warn" (click)="clearCart()">Remove All Books</button>
+    </div>
+     
+    <div class="delivery_container">
+      <h3>Deliver To</h3>
+      <div *ngIf="deliveryData" class="prefilled-address">
+        <p><strong>Name:</strong> {{ deliveryData.name }}</p>
+        <p><strong>Email:</strong> {{ deliveryData.email }}</p>
+        <p><strong>Address:</strong> {{ deliveryData.address }}</p>
+        <p><strong>Postal Code:</strong> {{ deliveryData.zipcode }}</p>
+        <p><strong>Delivery Day:</strong> {{ deliveryData.deliveryDay }}</p>
+        <p><strong>Delivery Location:</strong> {{ deliveryData.deliveryLocation }}</p>
+      </div>
+
+
+    <div class="payment_container">
+      <div id="card-element" class="stripe-card"></div>
+      <p *ngIf="cardError" class="error-message">{{ cardError }}</p>
+      <p *ngIf="isProcessing" class="loading-message">Processing Payment...</p>
+      <button (click)="placeOrder()" [disabled]="isProcessing">
+        {{ isProcessing ? 'Processing...' : 'Place Order' }}
+      </button>
+    </div>
+  </div>
+
+  <ng-template #emptyCart>
+    <p>Your cart is empty.</p>
+  </ng-template>
+</div>

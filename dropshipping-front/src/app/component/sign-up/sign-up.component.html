@@ -1,0 +1,39 @@
+<div class="singUp_container">
+    <form [formGroup]="singupForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="Enter your id" formControlName="id">
+        <mat-error *ngIf = "singupForm.get('id').invalid">Username is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Enter your First Name" formControlName="firstName">
+        <mat-error *ngIf = "singupForm.get('firstName').invalid"> First Name is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Enter your Last Name" formControlName="lastName">
+        <mat-error *ngIf = "singupForm.get('lastName').invalid">Last Name is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Enter your Email Address" formControlName="email">
+        <mat-error *ngIf = "singupForm.get('email').invalid">Email is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Enter your Password" formControlName="password">
+        <mat-error *ngIf = "singupForm.get('password').invalid">Password is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label> Confirm Password</mat-label>
+        <input matInput placeholder="Confirm Password" formControlName="confirmpassword">
+        <mat-error *ngIf = "singupForm.get('confirmpassword').invalid">Passwords don't match</mat-error>
+      </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="singupForm.invalid">Sing Up</button>
+    </form>  
+    </div>
+
+    <div class="links">
+    <p>You already have an account ?</p><a (click)="openSignIn()">Sing in here</a>
+    </div>

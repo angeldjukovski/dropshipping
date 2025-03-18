@@ -1,0 +1,16 @@
+<div class="book_container" (click)="closeDrop($event)">
+  <div class="dropdown_genre">
+  <button mat-button class="menu-btn" (click)="toggleDropdown($event)">Non-Fiction</button>
+  <div class="dropdown_menu" *ngIf="openDropDown">
+  <div class="dropdown_section" *ngFor=" let genre of bookgenre">
+  <h3>{{genre.name}}</h3>
+  <ul>
+  <li *ngFor="let item of genre.items">
+  <a [routerLink]="['/', genre.path, item.path]" (click)="closeDropDown()">{{item.name}} </a>
+  </li>
+  </ul>
+  
+  </div>
+  </div>
+  </div>
+  </div>

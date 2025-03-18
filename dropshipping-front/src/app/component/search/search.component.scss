@@ -1,0 +1,57 @@
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.searchBarInput  {
+  height: 43px;
+  width: 600px;
+  }
+
+  .searchBarIcon {
+    position: relative;
+    background:none;
+    border: none;
+    right: 30px;
+    top: 20px;
+  
+  }
+  span {
+    position: relative;
+    right: 100px;
+  }
+
+.loading-indicator {
+  font-size: 0.9rem;
+  color: #007BFF;
+}
+
+.books-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.no-results {
+  font-size: 1rem;
+  color: #ff0000;
+  text-align: center;
+  margin-top: 2rem;
+}
+.search-results {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top : 400px
+}
+.span{
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 50px;
+}
+
+.search-res {
+  display: flex;
+  flex-direction: row;
+}

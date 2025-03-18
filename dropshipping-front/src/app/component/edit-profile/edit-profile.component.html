@@ -1,0 +1,26 @@
+<div class="profile_container">
+  <form [formGroup]="editProfileForm!" *ngIf="editProfileForm" (ngSubmit)="onUpdate()">
+     
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput placeholder="Enter your First Name" formControlName="id">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Enter your First Name" formControlName="firstName">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Last Name</mat-label>
+      <input matInput placeholder="Enter your Last Name" formControlName="lastName">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Enter your Email Address" formControlName="email">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" class="button1">Update</button>
+  </form>
+</div>

@@ -1,0 +1,16 @@
+.book_container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.example-card {
+  max-width: 400px;
+  background-color: rgb(227, 227, 227);
+}
+
+.book-card-image {
+  max-height: 300px;
+  object-fit: cover;
+}

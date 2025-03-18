@@ -1,0 +1,38 @@
+.wishlist_container {
+max-width: 800px;
+margin : auto;
+text-align: center;
+margin-top: 500px;
+}
+
+.empty_wishlist {
+    margin-top: 50px;
+    font-size: 20px;
+    color: black;
+}
+.wishlist-item {
+margin: 10px 0;
+}
+
+mat-card {
+ display: flex;   
+ align-items: center;
+ padding: 10px;
+}
+
+mat-card-content {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+img {
+width: 100px;
+height: 150px;
+object-fit: cover;
+border-radius: 5px;
+}
+
+button {
+margin-top: 10px;
+  }

@@ -1,0 +1,22 @@
+<div class="singIn_container">
+  <form [formGroup]="singinForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Enter your Email Address"  formControlName="email">
+      <mat-error *ngIf = "singinForm.get('email').invalid">Email is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Enter your Password" formControlName="password">
+      <mat-error *ngIf = "singinForm.get('password').invalid">Password is required</mat-error>
+    </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="singinForm.invalid">Sign In</button>
+
+  <div class="links">
+    <a (click)="onForgetPassword()">Forgot Password?</a>
+    <p>Dont have an account ?</p><a (click)="onSignUp()">Sing Up here</a>
+    </div>
+  
+  </form>  
+  </div>

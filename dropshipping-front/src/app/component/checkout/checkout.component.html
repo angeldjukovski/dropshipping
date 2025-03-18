@@ -1,0 +1,19 @@
+<div class="checkout-container">
+    <h2>Checkout</h2>
+  
+    <div *ngIf="orderItems.length > 0; else emptyOrder">
+      <div class="cart-item" *ngFor="let item of orderItems">
+        <p>{{ item.book.title }} ({{ item.quantity }}x)</p>
+        <p>{{ item.book.price | currency }}</p>
+      </div>
+  
+      <hr />
+      <h3>Total: {{ totalPrice | currency }}</h3>
+  
+      <button (click)="placeOrder()">Place Order</button>
+    </div>
+  
+    <ng-template #emptyOrder>
+      <p>You dont have any Orders.</p>
+    </ng-template>
+  </div>

@@ -1,0 +1,22 @@
+<div class="wishlist">
+    <h1>My Wishlist</h1>
+  
+    <div *ngIf="wishListBook.length === 0" class="empty-wishlist">
+      <p>The wishlist is empty</p>
+    </div>
+  
+    <div *ngFor="let book of wishListBook" class="wishlist-item">
+      <mat-card>
+        <mat-card-content>
+          <img mat-card-image [src]="book.bookID.image" [alt]="book.bookID.title">
+          <h2>{{ book.bookID.title }}</h2>
+          <p>{{ book.bookID.author }}</p>
+          <p><strong>{{ book.bookID.price | currency }}</strong></p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="warn" (click)="deleteFromWishList(book.id)">Remove</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  

@@ -1,0 +1,21 @@
+<div class="profile_container">
+    <div class="sidenav">
+    <h2>Account Details Of</h2>
+    <p class="username">{{user?.id}}</p>
+    <ul>
+    <li><a routerLink="/order">Your Order</a></li>
+    <li><a routerLink="/delivery" >Your Dilvery Form</a></li>
+    <li><a routerLink="/wishlist">Wishlist</a></li>
+    </ul>
+</div>
+    <div class="profile">
+    <div class="card">
+    <h3>Personal Infromation</h3>
+    <p><strong>First Name:{{user?.firstName}}</strong></p>
+    <p><strong>Last Name:{{user?.lastName}}</strong></p>
+    <p><strong>Email:{{user?.email}}</strong></p>
+    <button mat-raised-button color="primary" type="submit" class="button1" (click)="editProfile()">Edit Account</button>
+    <button mat-raised-button color="primary" type="submit" class="button2" (click)="changePassword()">Change Password</button>
+    </div>
+    </div>
+    </div>
