@@ -89,7 +89,7 @@ return { message: 'Password updated successfully' };
 }
 
 private async generateTokens(user: UserDocument): Promise<{ token: string, refreshToken: string }> {
-const payload = { email: user.email, sub: user.id, role: user.role ?? UserRole.Costumer };
+const payload = { email: user.email, sub: user.id, role: user.role  };
 console.log("JWT Secret in AuthService:", process.env.JWT_SECRET);
 const token = this.jwtService.sign(payload, {expiresIn : '1h'});
 const refreshToken = this.jwtService.sign(payload, { expiresIn: '30d' });
