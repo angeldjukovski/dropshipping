@@ -1,23 +1,49 @@
+h1 {
+  font-family: 'Times New Roman', Times, serif;
+  }
+  p {
+  font-family: 'Times New Roman', Times, serif;
+  }
+  
 .example-card {
-    max-width: 300px;
-    background-color: rgb(227, 227, 227);
+  max-width: 300px;
+  background-color:  whitesmoke
 }
 
 .book_container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    padding: 16px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 16px;
 }
 
 .book-card-content {
-    flex: 1;
-    padding-top: 10px;
+  flex: 1;
+  padding-top: 10px;
 }
 
 .book-card-image {
-    max-height: 240px;
-    object-fit: cover;
+  max-height: 240px;
+  object-fit: cover;
+}
+
+mat-icon {
+  color: red;
+  }
+  
+
+.snack-bar-sucess {
+background-color: lightblue;
+color: white ;
+font-family: 'Times New Roman', Times, serif;
+text-align: center;
+}
+
+.snack-bar-faliure {
+background-color: rgb(206, 54, 12);
+color : white; 
+font-family: 'Times New Roman', Times, serif;
+text-align: center;
 }

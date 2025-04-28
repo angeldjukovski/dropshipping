@@ -22,9 +22,9 @@ console.log('Wishlist Data:', wishlistModel)
 return wishlistModel
 }
 
-async deleteWishListBook(sub:string, bookID:string):Promise<void>  {
-console.log('Deleting book from wishlist')
-await this.wishlistModel.deleteOne({sub, bookID})
+async deleteWishListBook(id : string):Promise<WishList | null>  {
+const deleteWishListBook = this.wishlistModel.findByIdAndDelete(id) 
+return deleteWishListBook
 }
 
 async addBookWishList (sub : string, bookID : string): Promise<WishList> {

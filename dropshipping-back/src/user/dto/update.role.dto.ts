@@ -5,6 +5,6 @@ import { ApiProperty } from "@nestjs/swagger"
 export class UserRoleDTO {
 @IsEnum(UserRole)
 @IsNotEmpty()
-@ApiProperty({enum:UserRole,example:UserRole.Costumer})
+@ApiProperty({enum:UserRole,example:UserRole.Customer})
 role:UserRole
 }

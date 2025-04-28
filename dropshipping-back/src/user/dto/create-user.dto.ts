@@ -14,5 +14,5 @@ password: string
 @IsEnum(UserRole) 
 @IsOptional()
 @ApiProperty()
-role: UserRole = UserRole.Costumer
+role: UserRole = UserRole.Customer
 }

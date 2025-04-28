@@ -35,7 +35,7 @@ async register(registerDTO: RegisterDTO): Promise<UserBack> {
     firstName,
     lastName,
     password: hashedPassword,
-    role: registerDTO.role ?? UserRole.Costumer,
+    role: registerDTO.role ?? UserRole.Customer,
   });
   const userInstance = plainToInstance(User, createdUser.toObject());
   return userInstance;
@@ -52,7 +52,7 @@ async login (loginDTO : LoginDTO): Promise <RefreshTokenDtoResponse>   {
   user.password,
   );
   if(!isPasswordCorrect) {
-  throw new BadRequestException('Invalid credentials')
+  throw new BadRequestException('Wrong Password')
   }
   const {token , refreshToken} = await this.generateTokens(user)
   return { token, refreshToken }

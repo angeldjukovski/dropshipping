@@ -17,8 +17,8 @@ getWishList() : Observable<WishLsit[]> {
 return this.http.get<WishLsit[]>(`${this.apiUrl}/wishlist`)
 }
 
-deleteBook(bookID: string): Observable<void> {
-return this.http.delete<void>(`${this.apiUrl}/wishlist`, {body : {bookID}});
+deleteBook(id: string): Observable<void> {
+return this.http.delete<void>(`${this.apiUrl}/wishlist/${id}`);
 }
 
 addWishListBook (bookID:string): Observable<any> {

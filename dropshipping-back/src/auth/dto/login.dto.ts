@@ -17,6 +17,6 @@ password : string
 @IsNotEmpty()
 @IsOptional()
 @IsEnum(UserRole)
-role: UserRole = UserRole.Costumer
+role: UserRole = UserRole.Customer
 
 }

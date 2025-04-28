@@ -47,20 +47,7 @@ clearCart(): void {
 this.cartItems.next([])
 this.bookAddCount = {}
 }
-getTrendingBooks () : Book[] {
-if(this.cartItems.value.length === 0) {
-return []
-}
-const sortedBookIds = Object.entries(this.bookAddCount)
-.sort (([, countA], [, countB]) => countB - countA)
-.map (([bookId]) => bookId)
 
-return this.cartItems.value 
-.map((item) => item.book)
-.filter ((book) => sortedBookIds.includes(book.id))
-.sort((a, b) => sortedBookIds.indexOf(a.id) - sortedBookIds.indexOf(b.id));
-
-}
 
 
 }

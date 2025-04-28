@@ -1,12 +1,13 @@
 <mat-toolbar color="primary">
-  <span>My App</span>
+  <a [routerLink]="['/']"><span>BookCraft</span></a>
   <span class="spacer"></span>
   <app-search></app-search>
-  <a mat-button [routerLink]="['/delivery']">Delivery</a>
   <a mat-button [routerLink]="['/']">Home</a>
   <a mat-button [routerLink]="['/contact']">Contact Us</a>
-  <a mat-button (click)="openAuth()">{{isLoggedIn() ? 'My Account' : 'Sign In/Sign Up'}}</a> 
-  <a mat-button (click)="logout()">Logout</a> 
+  <a mat-button (click)="openAuth()">
+    {{ isLoggedIn() ? (userRole() === 'Admin'  ? 'Admin Panel' : userRole() === 'Employee' ? 'Employee Panel' : 'My Account') : 'Sign In/Sign Up' }}</a>
+    
+  <a *ngIf="isLoggedIn()" mat-button (click)="logout()">Logout</a> 
   <button mat-icon-button class="cart-icon" aria-label="Cart Icon" [routerLink]="['/cart']">
     <mat-icon>shopping_cart</mat-icon>
   </button>

@@ -35,7 +35,7 @@ throw new Error ('ROLE IS MISSING')
 return {
 email: payload.email,
 id: payload.sub,
-role: payload.role ?? UserRole.Costumer,
+role: payload.role ?? UserRole.Customer,
 }
 }
 

@@ -1,0 +1,219 @@
+<div class="sidenav">
+  <h2>Admin Panel of </h2>
+  <p class="username">{{user?.id}}</p>
+  <ul>
+  <li> <a (click)="adminPanel()">Admin Profile</a></li>
+  <li> <a (click)="usersLists()">Users Lists</a></li>
+  <li> <a (click)="deliveriesLists()">Deliveries Lists</a></li> 
+  <li> <a (click)="ordersLists()">Orders Lists</a></li> 
+  <li> <a (click)="employeeLists()">Employee Lists</a></li>
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+<div>
+  <h2>Book List</h2>
+
+  <div class="bookadd_container">
+  <form [formGroup]="bookForm" (ngSubmit)="OnSubmit()">
+   <div class="add-form">
+    <h1>Add Book</h1>
+    <div class="title">
+      <label for="title">Title:</label>
+      <input type="text" id="title" formControlName="title" placeholder="Enter Book Title" required />
+    </div>
+    <div class="author">
+      <label for="author">Author:</label>
+      <input type="text" id="author" formControlName="author" placeholder="Enter The Name of The Author" required />
+    </div>
+    <div class="genre">
+      <label for="genre">Genre:</label>
+      <input type="text" id="genre" formControlName="genre" placeholder="Enter The Genre" required />
+    </div>
+    <div class="publishedDate">
+      <label for="publishedDate">Date:</label>
+      <input type="date" id="publishedDate" formControlName="publishedDate" required />
+    </div>
+    <div class="bestSeller">
+      <label for="bestSeller">Best Seller:</label>
+      <mat-select formControlName="bestSeller" required>
+        <mat-option [value]=true>Yes</mat-option>
+        <mat-option [value]=false>No</mat-option>
+      </mat-select>
+    </div>
+    <div class="discount">
+      <label for="discount">Discount:</label>
+      <mat-select formControlName="discount" required>
+        <mat-option [value]="true">Yes</mat-option>
+        <mat-option [value]="false">No</mat-option>
+      </mat-select>
+    </div>
+    <div class="cover">
+    <label for = 'cover'>Cover:</label>
+     <select name="cover" id="cover" formControlName="cover" required>
+      <option value="hardcover">Hardback</option>
+      <option value="paperback">Paperback</option>
+     </select>
+     <div>
+      <label for="price">Price:</label>
+      <input type="number" id="price" formControlName="price" placeholder="Enter The Price" required />
+     </div>
+      <div class="image">
+        <label for="image">Image:</label>
+        <input type="text" id="image" formControlName="image" placeholder="Enter The Image URL" required />
+        </div>
+        <div class="description">
+          <label for="description">Description:</label>
+          <textarea id="description" formControlName = "description" placeholder="Leave a Description"></textarea>
+          </div>
+        <div class="button">
+          <button mat-raised-button color="primary" type="submit">Add Book</button>
+          </div>
+    </div>
+   </div>
+  </form>
+  </div>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Search Books</mat-label>
+    <input matInput (keyup)="applyFiter($event)" placeholder="Search" />
+  </mat-form-field>
+
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+   
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+      <mat-cell *matCellDef="let book"> {{ book.id }} </mat-cell>
+    </ng-container>
+
+   
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+      <mat-cell *matCellDef="let book">
+        <ng-container *ngIf="editRowId === book.id; else viewTitle">
+          <input [(ngModel)]="editedBook.title" />
+        </ng-container>
+        <ng-template #viewTitle>{{ book.title }}</ng-template>
+      </mat-cell>
+    </ng-container>
+
+   
+    <ng-container matColumnDef="author">
+      <mat-header-cell *matHeaderCellDef> Author </mat-header-cell>
+      <mat-cell *matCellDef="let book">
+        <ng-container *ngIf="editRowId === book.id; else viewAuthor">
+          <input [(ngModel)]="editedBook.author" />
+        </ng-container>
+        <ng-template #viewAuthor>{{ book.author }}</ng-template>
+      </mat-cell>
+    </ng-container>
+
+  
+    <ng-container matColumnDef="publishedDate">
+      <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+      <mat-cell *matCellDef="let book">
+        <ng-container *ngIf="editRowId === book.id; else viewDate">
+          <input type="date" [(ngModel)]="editedBook.publishedDate" />
+        </ng-container>
+        <ng-template #viewDate>{{ book.publishedDate }}</ng-template>
+      </mat-cell>
+    </ng-container>
+
+   
+    <ng-container matColumnDef="bestSeller">
+      <mat-header-cell *matHeaderCellDef> Best Seller </mat-header-cell>
+      <mat-cell *matCellDef="let book">
+        <ng-container *ngIf="editRowId === book.id; else viewBS">
+          <mat-select [(ngModel)]="editedBook.bestSeller">
+            <mat-option [value]="true">Yes</mat-option>
+            <mat-option [value]="false">No</mat-option>
+          </mat-select>
+        </ng-container>
+        <ng-template #viewBS>{{ book.bestSeller ? 'Yes' : 'No' }}</ng-template>
+      </mat-cell>
+    </ng-container>
+
+   
+    <ng-container matColumnDef="discount">
+      <mat-header-cell *matHeaderCellDef> Discount </mat-header-cell>
+      <mat-cell *matCellDef="let book">
+        <ng-container *ngIf="editRowId === book.id; else viewDiscount">
+          <mat-select [(ngModel)]="editedBook.discount">
+            <mat-option [value]="true">Yes</mat-option>
+            <mat-option [value]="false">No</mat-option>
+          </mat-select>
+        </ng-container>
+        <ng-template #viewDiscount>{{ book.discount ? 'Yes' : 'No' }}</ng-template>
+      </mat-cell>
+    </ng-container>
+
+  
+    <ng-container matColumnDef="cover">
+      <mat-header-cell *matHeaderCellDef> Cover </mat-header-cell>
+      <mat-cell *matCellDef="let book">
+        <ng-container *ngIf="editRowId === book.id; else viewCover">
+          <input [(ngModel)]="editedBook.cover" />
+        </ng-container>
+        <ng-template #viewCover>{{ book.cover }}</ng-template>
+      </mat-cell>
+    </ng-container>
+
+   
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+      <mat-cell *matCellDef="let book">
+        <ng-container *ngIf="editRowId === book.id; else viewPrice">
+          <input type="number" [(ngModel)]="editedBook.price" />
+        </ng-container>
+        <ng-template #viewPrice>${{ book.price }}</ng-template>
+      </mat-cell>
+    </ng-container>
+
+    
+    <ng-container matColumnDef="genre">
+      <mat-header-cell *matHeaderCellDef> Genre </mat-header-cell>
+      <mat-cell *matCellDef="let book">
+        <ng-container *ngIf="editRowId === book.id; else viewGenre">
+          <input [(ngModel)]="editedBook.genre" />
+        </ng-container>
+        <ng-template #viewGenre>{{ book.genre }}</ng-template>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="image">
+      <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
+      <mat-cell *matCellDef="let book">
+        <ng-container *ngIf="editRowId === book.id; else viewImage">
+          <input [(ngModel)]="editedBook.image" />
+        </ng-container>
+        <ng-template #viewImage>{{ book.image }}</ng-template>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+      <mat-cell *matCellDef="let book">
+        <ng-container *ngIf="editRowId === book.id; else defaultButtons">
+          <button mat-icon-button (click)="saveEdit(book.id)"><mat-icon>save</mat-icon></button>
+          <button mat-icon-button (click)="cancelEdit()"><mat-icon>cancel</mat-icon></button>
+        </ng-container>
+        <ng-template #defaultButtons>
+          <button mat-button color="accent" (click)="startEdit(book)">Edit</button>
+          <button mat-button color="warn" (click)="deleteBook(book.id)">Delete</button>
+        </ng-template>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayColums"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayColums;"></mat-row>
+  </mat-table>
+</div>

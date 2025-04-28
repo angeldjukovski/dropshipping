@@ -1,5 +1,5 @@
 <div *ngIf="book" class="book_container">
-  <mat-card class="example-card">
+  <mat-card class="example-card" color="primary">
     <img mat-card-image src="{{book.image}}" alt="{{book.title}}" class="book-card-image">
     <mat-card-content class="book-card-content">
       <h1>{{ book.title }}</h1>
@@ -7,6 +7,12 @@
       <p><strong>Published Date:</strong> {{ book.publishedDate}}</p>
       <p><strong>Price:</strong> {{ book.price}}</p>
       <p><strong>Description:</strong> {{ book.description }}</p>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="addToCart(book)">Add to Cart</button>
+        <button mat-icon-button class="wishlist-icon" (click)="addWishListBook(book)" aria-label="Wishlist Icon">
+          <mat-icon>favorite</mat-icon>
+         </button>
+      </mat-card-actions>
     </mat-card-content>
   </mat-card>
 </div>

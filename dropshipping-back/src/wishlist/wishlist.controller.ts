@@ -19,10 +19,9 @@ console.log(`Very Nice`)
 return wishlist
 }
 
-@Delete()
-async removeFromWishlist(@Req() req, @Body() body: { bookID: string }){
-const userId = req.user.sub
-return this.wishListBookService.deleteWishListBook(userId,body.bookID);
+@Delete(':id')
+async removeFromWishlist ( @Param('id') id : string){
+return this.wishListBookService.deleteWishListBook(id)
 }
 
 @Post()

@@ -16,7 +16,7 @@ export class AuthController {
 constructor( private authService : AuthService) {} 
 
 
-@ApiBadRequestResponse({description: 'Returns bad request error if the email already exists',type: BadRequestException,})
+@ApiBadRequestResponse({description: 'The email already exists',type: BadRequestException,})
 @ApiResponse({description: 'User is registered', type: User})
 @Post('register')
 register(@Body() registerDto: RegisterDTO): Promise<UserBack> {

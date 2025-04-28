@@ -30,8 +30,6 @@ return this.http.post(`${this.apiUrl}/delivery`,deliveryData).pipe (
 }
 
 
-
-
 editDelivery (updateData : any ) : Observable<any>  {
 return this.http.put(`${this.apiUrl}/delivery`,updateData).pipe (
 switchMap (() => {
@@ -58,5 +56,16 @@ getDelivery(userId: string): Observable<Delivery | null> {
     );
   }
 
+  getAllDeliveries() : Observable <Delivery[]> {
+  return this.http.get<Delivery[]>(`${this.apiUrl}/delivery/deliveries-lists`)
+  }
+  
+  deleteDelivery(id:string):Observable<void> {
+  return this.http.delete<void>(`${this.apiUrl}/delivery/${id}`)
+  }
+
+  updateDelivery(userId:string, delivery: Partial<Delivery>) : Observable <Delivery> {
+  return this.http.patch<Delivery>(`${this.apiUrl}/delivery/${userId}`,delivery)
+  }
 
 }

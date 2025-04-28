@@ -1,10 +1,13 @@
-
-<select (change)="changeSort($event)">
+<div class="filter_container">
+<div class="sort_container">
+<select (change)="changeSort($event)" class="sort-select">
   <option value="asc">Price: Low to High</option>
   <option value="desc">Price: High to Low</option>
 </select>
 
+</div>
 
+<div class="paginaton_container">
 <mat-paginator
   [length]="totalItems"
   [pageSize]="pageSize"
@@ -13,4 +16,7 @@
   (page)="changePage($event)"
   aria-label="Select page of books"> 
 </mat-paginator>
+</div>
 
+
+</div>

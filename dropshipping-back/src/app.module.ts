@@ -19,6 +19,8 @@ import { PaymentModule } from './payment/payment.module';
 import { ProductService } from './product/product.service';
 import { ProductController } from './product/product.controller';
 import { ProductModule } from './product/product.module';
+import { ContactUsModule } from './contact-us/contact-us.module';
+import { EmployeeModule } from './employee/employee.module';
 
 
 
@@ -41,7 +43,9 @@ import { ProductModule } from './product/product.module';
   WishlistModule,
   OrdersModule,
   EditProfileModule,
-  ProductModule
+  ProductModule,
+  ContactUsModule,
+  EmployeeModule
 
  
 

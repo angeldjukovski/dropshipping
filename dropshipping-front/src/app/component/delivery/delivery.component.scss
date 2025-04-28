@@ -1,67 +1,125 @@
-.delivery_container {
-display:flex;
-justify-content: center;
-align-items: center;
-padding: 50px 20px;
-}
+.page_layout {
+  gap: 20px ;
+  background-color: white ;
 
-.delivery-form {
-width: 600px;
-max-width: 100%;
-background-color:#ffffff;
-padding: 40px;
-border-radius: 8px;
-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-transition: box-shadow 0.3s ease;
+  .sidenav {
+    background-color: white;
+    border : 1px solid #e0e0e0;
+    padding : 24px;
+    width: 280px;
+    flex-shrink: 0;
+    
+    }
+    
+    .sidenav h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #3f51b5;
+    text-align: center;
+    }
+    
+    .username {
+        font-size: 16px;
+        font-weight: bold;
+        color: #555;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      
+      .sidenav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .sidenav ul li {
+        margin: 16px 0;
+      }
+      
+      .sidenav ul li a {
+        text-decoration: none;
+        color: #333;
+        font-size: 16px;
+        padding: 8px 12px;
+        display: block;
+        border-radius: 8px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+      
+      .sidenav ul li a:hover {
+        background-color: #e3e7ff;
+        color: #3f51b5;
+      }
 
-&:hover {
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15); 
   }
-   
-  .id,
-  .name,
-  .email,
-  .phonenumber,
-  .address,
-  .zipcode,
-  .day,
-  .location   {
-  margin-bottom: 20px;
 
-  
+  .delivery_container {
+    display:flex;
+    justify-content: center;
+    align-items: center;  
+    
+    
+    .delivery-form {
+    width: 600px;
+    max-width: 100%;
+    padding: 40px;
+    background-color:#ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    
+    &:hover {
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15); 
+      }
+       
+      .id,
+      .name,
+      .email,
+      .phonenumber,
+      .address,
+      .zipcode,
+      .day,
+      .location   {
+      margin-bottom: 20px;
+    
+      
+    
+      label {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #333
+      }
+    
+      input,
+      select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      }
+      
+      button {
+      width: 100%;
+      padding: 12px;
+      background-color: blue;
+      color: white;
+      border: none;
+      border-radius:4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      }
+      
+      button:hover {
+      background-color: black;
+      }
+    } 
+  }
+    }
 
-  label {
-  display: block;
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #333
-  }
 
-  input,
-  select {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  }
-  
-  button {
-  width: 100%;
-  padding: 12px;
-  background-color: blue;
-  color: white;
-  border: none;
-  border-radius:4px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-  background-color: black;
-  }
-} 
 
-}
+

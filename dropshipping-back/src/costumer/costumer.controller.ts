@@ -25,7 +25,7 @@ constructor(private readonly costumerService: CostumerService) {}
 
 @ApiCreatedResponse({ description: 'New costumer has been created' })
 @ApiBadRequestResponse({description: "invalid input", type: BadRequestException})
-@Role([UserRole.Costumer])
+@Role([UserRole.Customer])
 @Post()
 createCostumer (@Body() createCostumerDTO : CreateCostumerDTO) {
 return this.costumerService.createCostumer(createCostumerDTO)
@@ -33,7 +33,7 @@ return this.costumerService.createCostumer(createCostumerDTO)
 @ApiOperation({description: "Find all costumers",})
 @ApiOkResponse({ description: 'List of costumers' })
 @ApiBadRequestResponse({description: "Not guests found", type: BadRequestException})
-@Role([UserRole.Costumer,UserRole.Admin])
+@Role([UserRole.Customer,UserRole.Admin])
 @Get()
  async findall(@Query() searchQueryDTO : SearchQueryDTO): Promise<Response<CostumerDocument[]>> {
 return this.costumerService.findAll(searchQueryDTO).then(costumers => ({
@@ -44,7 +44,7 @@ total: costumers.length
 @ApiOperation({description: "Find a costumer from his id",})
 @ApiOkResponse({ description: 'Costumer retrieved successfully' })
 @ApiNotFoundResponse({description: 'costumer not found'})
-@Role([UserRole.Costumer,UserRole.Admin, UserRole.Employee])
+@Role([UserRole.Customer,UserRole.Admin, UserRole.Employee])
 @Get()
 async getById (@Param() id:string):Promise <CostumerDocument>  {
 return this.costumerService.getById(id)

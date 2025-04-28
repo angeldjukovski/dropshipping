@@ -11,6 +11,7 @@ import { Types } from 'mongoose';
 import { EditDeliveryDTO } from './dto/delivery.edit.dto';
 
 
+
 @Injectable()
 export class DeliveryService {
 
@@ -37,11 +38,24 @@ console.log(`Delivery Data of ${userId} : `, delivery)
 return delivery
 }
 
+async getAllDeliveries():Promise <DeliveryDocument[]>  {
+const delivery = this.deliveryModel.find().exec()
+return delivery 
+}
+
+async updateDelivery(userId : string, editDeliveryDTO: EditDeliveryDTO) {
+const updateDelivery = await this.deliveryModel.findOneAndUpdate({userId},editDeliveryDTO, {new:true}).exec()
+return updateDelivery
+}
 
 async editDelivery(userId: string,  editDeliveryDTO: EditDeliveryDTO) :Promise <DeliveryBack> {
 const editDelivery = await this.deliveryModel.findOneAndUpdate({userId}, {...editDeliveryDTO},  { new: true, upsert: true, returnDocument: 'after' } )
 return editDelivery
+}
 
+async deleteDelivery(id : string): Promise <DeliveryDocument | null> {
+const deleteDelivery = await this.deliveryModel.findByIdAndDelete(id).exec() 
+return deleteDelivery
 }
 
 }

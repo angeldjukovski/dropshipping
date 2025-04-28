@@ -10,6 +10,7 @@ import { Sort } from '../types/sort.enum';
 })
 export class BookServiceService {
   private apiUrl = 'http://localhost:3000/api/book-db'
+  private apiUrl2 = 'http://localhost:3000/api/books-lists'
   constructor(private http:HttpClient) { }
    
   searchBooks(query:string):Observable<Book[]>{
@@ -28,6 +29,13 @@ export class BookServiceService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
   
+  updateBook(id: string, book: Partial<Book>): Observable<Book> {
+    return this.http.patch<Book>(`${this.apiUrl}/${id}`, book);
+  }
+  
+  createBook(book: Book): Observable<Book> {
+    return this.http.post<Book>(this.apiUrl, book);
+  }
 
 
   /*/getBookByDetails(id: string): Observable<Book> {
@@ -46,6 +54,14 @@ export class BookServiceService {
     const params = new HttpParams().set ("bestSeller",bestSeller.toString())
     return this.http.get<Book[]>(`${this.apiUrl}/bestseller`, { params });
     }
+    
+    getTrendingBooks(): Observable<Book[]> {
+      return this.http.get<Book[]>(`${this.apiUrl}/trending`);
+      }
+    
+   
+
+
     getBestBargain(bestSeller:boolean, discount:boolean): Observable <Book[]> {
     const params = new HttpParams()
     .set('bestSeller', bestSeller.toString())
@@ -61,5 +77,12 @@ export class BookServiceService {
     return this.http.get<{ books: Book[]; total: number }>(`${this.apiUrl}/genre/${genre}/page`, { params });
     }
     
+    moveAdminPage( page:number, limit:number,): Observable <{books:Book[]; total: number}> {
+      const params = new HttpParams()
+      .set ('page', page.toString())
+      .set ('limit', limit.toString())
+      return this.http.get<{ books: Book[]; total: number }>(`${this.apiUrl2}/page`, { params });
+      }
+
   
 }

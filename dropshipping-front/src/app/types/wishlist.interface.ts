@@ -1,7 +1,7 @@
 import { Book } from "./book.interface";
 
 export interface WishLsit {
-    id: string;
+    _id: string;
     sub: string;
     bookID: Book;
 }

@@ -7,13 +7,12 @@ title:string;
 @IsString()
 author:string;
 
-@IsDateString()
 @IsOptional()
+@IsDateString()
 publishedDate?:string;
 
 @IsNumber()
 price:number;
-
 
 @IsString()
 @IsOptional()

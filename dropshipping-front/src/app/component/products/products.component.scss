@@ -1,16 +1,19 @@
+
 .book_container {
   position: relative;
   display: inline-block;
+  z-index: 1000px;
   
   .dropdown_genre {
   position: relative;
   
   .menu-btn {
-  background-color: white;
+  background-color:  #066fd1;
+  color: white;
   border: none;
   padding: 10px 20px;
-  font-size:  16px;
-  font-weight: bold;
+  font-size:  26px;
+  font-family: 'Times New Roman', Times, serif;
   cursor: pointer;
   text-transform: uppercase;
   }
@@ -19,6 +22,7 @@
   position: absolute;
   top:100% ;
   left:0;
+  z-index: 1050;
   background-color: white;
   border: 1px solid #fffefe;
   padding:20px;
@@ -83,5 +87,4 @@
  }
  }
 
- 
      

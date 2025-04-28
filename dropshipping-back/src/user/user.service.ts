@@ -46,23 +46,11 @@ findByEmail (email: string) : Promise <UserDocument[]>  {
 return this.userModel.find({email}).exec()
 }
 
-async updateUser (id:string, updateUserDTO : UpdateUserDTO ): Promise <UserDocument>  {
-const update = await this.userModel.findByIdAndUpdate(id,updateUserDTO, {new:true}).exec()
+async updateUser (username:string, updateUserDTO : UpdateUserDTO ): Promise <UserDocument>  {
+const update = await this.userModel.findOneAndUpdate({id : username},updateUserDTO, {new:true}).exec()
 return update
 }
 
-async editUser (_id:string, usereditDTO : UserEditDTO ): Promise <UserDocument>  {
-if(!mongoose.Types.ObjectId.isValid(_id)) {
-throw new BadRequestException("Wrong User ID");
-}
-
-const editData = Object.fromEntries(Object.entries(usereditDTO).filter(([_,value]) => value !== undefined && value !== ''));
-const updatedUser = await this.userModel.findByIdAndUpdate(_id, editData, { new: true }).exec();
-if (!updatedUser) {
-throw new NotFoundException("User not found");
-}
-return updatedUser;
-}
 async updateUserRole  (id:string, updateUserRoleDTO : UserRoleDTO ): Promise <UserDocument>  {
 const updateRole = await this.userModel.findByIdAndUpdate(id,updateUserRoleDTO, {new:true}).exec()
 return updateRole

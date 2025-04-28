@@ -1,0 +1,111 @@
+.page_layout {
+gap: 40px ;
+padding : 40x 20px ;
+background-color: white ;
+min-height: 100vh;
+}
+
+.sidenav {
+background-color: white;
+border : 1px solid #e0e0e0;
+padding : 24px;
+width: 280px;
+flex-shrink: 0;
+
+}
+
+.sidenav h2 {
+font-size: 22px;
+margin-bottom: 10px;
+color: #3f51b5;
+text-align: center;
+}
+
+.username {
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .sidenav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidenav ul li {
+    margin: 16px 0;
+  }
+  
+  .sidenav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    padding: 8px 12px;
+    display: block;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .sidenav ul li a:hover {
+    background-color: #e3e7ff;
+    color: #3f51b5;
+  }
+
+  .main_content {
+    flex-grow: 1;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .delivery_container {
+    margin-bottom: 40px;
+  }
+  
+  .delivery_container h3 {
+    text-align: center;
+    color: #3f51b5;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .prefilled-address {
+    background: #eef2ff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .prefilled-address p {
+    margin: 8px 0;
+    font-size: 16px;
+  }
+  
+  .orders_section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  
+  .search_orders {
+    margin-bottom: 20px;
+  }
+  
+  .search_orders input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+
+  .orders_table {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 12px;
+  }
+  

@@ -12,7 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink,Router,} from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../shared/auth.service';
-import { Sign } from 'crypto';
+import { UserRole } from '../../types/user-role.enum';
 
 
 @Component({
@@ -41,7 +41,8 @@ onSubmit(){
 if(this.singinForm.valid)
 console.log(this.singinForm.valid)
 const {email,password} = this.singinForm.value;
-this.authService.login(email,password).subscribe ({
+const role = UserRole.Customer || UserRole.Admin
+this.authService.login(email,password,role).subscribe ({
 next : response => { 
   if(response) {
     this.router.navigate(['/profile'])

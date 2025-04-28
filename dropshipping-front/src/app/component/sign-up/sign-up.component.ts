@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { SignInComponent } from '../sign-in/sign-in.component';
 import { AuthService } from '../shared/auth.service';
 import { RouterLink, Router } from '@angular/router';
+import { UserRole } from '../../types/user-role.enum';
 
 
 @Component({
@@ -41,7 +42,8 @@ onSubmit(){
   console.log(this.singupForm.valid)
 
   const {id,firstName, lastName,email,password,confirmpassword} = this.singupForm.value;
-  this.authService.register(id,firstName,lastName,email,password,confirmpassword).subscribe({
+  const role = UserRole.Customer // this might cause issue with the admin panel
+  this.authService.register(id,firstName,lastName,email,password,confirmpassword,role).subscribe({
     next: (response) => {
       if (response) {
         this.router.navigate(['/sign-in']);

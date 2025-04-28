@@ -64,7 +64,3 @@ if(selectElement) {
 
 
 }
-
-
-
-

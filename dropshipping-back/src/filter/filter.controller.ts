@@ -22,7 +22,19 @@ export class FilterController {
     return {books,total}
    
   }
+  
+  @Get(':books-lists/page')
+  async moveAdminPage(@Query('page') page: string, @Query('limit') limit: string) {
+    const pageNum = parseInt(page, 10) || 1;
+    const limitNum = parseInt(limit, 10) || 10
 
+    if (!Number.isInteger(pageNum) || !Number.isInteger(limitNum) || pageNum < 1 || limitNum < 1) {
+      throw new BadRequestException('Invalid page or limit. Both must be positive integers.');
+    }
+
+    const result = await this.filterService.moveAdminPage(pageNum, limitNum);
+    return { books: result, total: result.length };
+  }
   
 
   @Get()

@@ -1,14 +1,19 @@
 <form class="example-form">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Search Books" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl" class="searchBarInput">
-    <mat-autocomplete #auto="matAutocomplete">
+    <input  matInput placeholder="Search Books"  aria-label="Search" [matAutocomplete]="auto" [formControl]="stateCtrl"class="searchBarInput">
+    <mat-autocomplete #auto="matAutocomplete" class="search-autocomplete">
       <mat-option *ngFor="let book of books" [value]="book.title" (click)="viewDetails(book)" class="search-res">
-        <img class="example-option-img" aria-hidden [src]="book.image" height="25">
-        <div>
-          <span>{{ book.title }}</span> |
-          <small>{{ book.author }}</small>
+        <div class="search-result-item">
+          <img class="search-result-img" [src]="book.image" alt="{{ book.title }}" />
+          <div class="search-result-text">
+            <p class="book-title">{{ book.title }}</p>
+            <small class="book-author">{{ book.author }}</small>
+          </div>
         </div>
       </mat-option>
     </mat-autocomplete>
-  </mat-form-field>
 </form>
+
+    
+  
+
+

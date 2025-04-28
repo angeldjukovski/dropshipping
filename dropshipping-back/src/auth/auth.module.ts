@@ -13,6 +13,9 @@ import { UserService } from 'user/user.service';
  import { UserController } from 'user/user.controller';
 import { JwtAuthGuard } from 'common/guard/jwt-auth.guards';
 import { RolesGuard } from 'common/guard/role.guard';
+import { ContactUsController } from 'contact-us/contact-us.controller';
+import { ContactUsService } from 'contact-us/contact-us.service';
+
 
 
 @Module({
@@ -28,10 +31,11 @@ import { RolesGuard } from 'common/guard/role.guard';
   }),
   
   }),
-  MongooseModule.forFeature([{ name: 'users', schema: UserSchema }])
+  MongooseModule.forFeature([{ name: 'users', schema: UserSchema }]),
+  PassportModule.register({ defaultStrategy : 'jwt'})
   ],
-  providers: [AuthService, JwtStrategy, MailService, UserService, RolesGuard, JwtAuthGuard ],
-  controllers: [AuthController, UserController],
+  providers: [AuthService, JwtStrategy, MailService, UserService, RolesGuard, JwtAuthGuard,],
+  controllers: [AuthController, UserController,],
 
 })
 export class AuthModule {}

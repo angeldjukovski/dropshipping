@@ -13,15 +13,20 @@ apiVersion : '2025-02-24.acacia'
 })
 }
 
-async createCharge(token: string, amount: number) {
+async createCharge(paymentMethodID: string, currency: string, amount: number) {
   try {
-    const charge = await this.stripe.charges.create({
-      amount: Math.round(amount * 100),
-      currency: 'USD',
-      source: token,
-      description: 'Book Purchase',
+    const paymentIntents = await this.stripe.paymentIntents.create({
+      amount: Math.round(Number (amount.toFixed(2)) *100),
+      currency: currency,
+      payment_method: paymentMethodID,
+      confirm: true,
+      automatic_payment_methods : {
+      enabled: true,
+      allow_redirects: 'never',
+      }
+      
     });
-    return charge;
+    return paymentIntents;
   } catch (error: any) {
     throw new BadRequestException('Payment failed: ' + error.message);
   }

@@ -1,46 +1,77 @@
-.home-content {
-max-height: 10px;
-margin-top: 300px;
+h2 {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 1rem 0;
+  color: #333;
+}
+
+p {
+  font-family: 'Times New Roman', Times, serif;
 }
 
 
 
 .horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding: 1rem 0;
+
+
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+  }
+
+  .home-content {
     display: flex;
-    overflow-x: auto;
-    gap: 16px;
-    padding: 8px 0;
-    scroll-behavior: smooth;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 16px;
   }
   
-  .book-card {
-    min-width: 200px;
-    max-width: 200px;
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
+
+  .example-card {
+    max-width: 300px;
+    background-color: whitesmoke
   }
   
-  .book-card img {
-    width: 100%;
-    height: auto;
+
+  .book-card-content {
+    flex: 1;
+    padding-top: 10px;
+  }
+  
+  .book-card-image {
+    max-height: 240px;
     object-fit: cover;
   }
-  
-  .discount-price {
-    color: green;
-    font-weight: bold;
-  }
-  
-  .original-price {
-    text-decoration: line-through;
-    color: gray;
-    margin-left: 8px;
-  }
-  
-  h2 {
-    margin-top: 24px;
-    font-size: 1.5em;
-  }
-  
-  
+
+  mat-icon {
+    color: red;
+    }
+    
+
+    .snack-bar-sucess {
+      background-color: lightblue;
+      color: white ;
+      font-family: 'Times New Roman', Times, serif;
+      text-align: center;
+      }
+      
+      .snack-bar-faliure {
+      background-color: rgb(206, 54, 12);
+      color : white; 
+      font-family: 'Times New Roman', Times, serif;
+      text-align: center;
+      }
+
+
+}

@@ -3,9 +3,9 @@ import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { BookServiceService } from '../book-service.service';
 import { Book } from '../../types/book.interface';
-import { MatFormFieldModule } from '@angular/material/form-field'; // Import MatFormFieldModule
-import { MatInputModule } from '@angular/material/input'; // Import MatInputModule
-import { CommonModule } from '@angular/common'; // Import CommonModule
+import { MatFormFieldModule } from '@angular/material/form-field'; 
+import { MatInputModule } from '@angular/material/input'; 
+import { CommonModule } from '@angular/common'; 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatOptionModule } from '@angular/material/core';
 import { Router } from '@angular/router';
@@ -16,8 +16,8 @@ import { Router } from '@angular/router';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    MatFormFieldModule, // Include MatFormFieldModule
-    MatInputModule, // Include MatInputModule
+    MatFormFieldModule, 
+    MatInputModule, 
     MatAutocompleteModule,
     MatOptionModule
   ],
@@ -25,9 +25,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./search.component.scss', '../products/book-data/book-data.component.scss']
 })
 export class SearchComponent implements OnInit {
-  stateCtrl = new FormControl(); // Control for the autocomplete input
-  books: Book[] = []; // List of books to be displayed
-  loading = false; // Loading state for the request
+  stateCtrl = new FormControl(); 
+  books: Book[] = []; 
+  loading = false; 
 
   constructor(private bookService: BookServiceService, private route: Router) { }
 
@@ -40,7 +40,7 @@ export class SearchComponent implements OnInit {
           this.loading = true;
           return this.bookService.searchBooks(query);
         } else {
-          return []; // Return an empty array if there's no query
+          return []; 
         }
       })
     ).subscribe((books: Book[]) => {

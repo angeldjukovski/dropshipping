@@ -24,8 +24,8 @@ currentUser = signal<User | null>(null)
 
 constructor(private readonly http: HttpClient, private readonly router: Router, private readonly notificationService: NotificationService, private readonly loggingService: LoggingService)  {}
 
-register(id:string,firstName : string, lastName: string, email:string, password:string, confirmPassword:string)  {
-  const requestBody = {id,firstName, lastName,email,password, confirmPassword};
+register(id:string,firstName : string, lastName: string, email:string, password:string, confirmPassword:string,role:string) { {
+  const requestBody = {id,firstName, lastName,email,password, confirmPassword,role};
   return this.http.post(`${this.authPath}/register`,requestBody).pipe (
   switchMap (() => {
   this.notificationService.showNotification('succesfull registration')
@@ -37,11 +37,22 @@ register(id:string,firstName : string, lastName: string, email:string, password:
    })
   )
   }
+}
+
+logoutPreventer() {
+const token = this.getToken('access') 
+if(token)  {
+this.getMe().subscribe();
+}else {
+this.isAuth.set(false) 
+this.currentUser.set(null);
+}
+}
 
 
-login(email: string, password: string) {
+login(email: string, password: string,role : string) {
 return this.http
-.post <AuthResponse>(`${this.authPath}/sign-in`,{email,password})
+.post <AuthResponse>(`${this.authPath}/sign-in`,{email,password,role})
 .pipe( tap((response) => {
 console.log("Login Test",response)
 if(response.token && response.refreshToken) {
@@ -79,6 +90,59 @@ getMe():Observable<User | null>  {
   })
   )
   }
+   
+  getAdmin():Observable<User | null>  {
+    if(!this.getToken('access')) {
+    return of(null);
+    }
+    return this.http.get <User>(`${this.userPath}/admin-panel`).pipe (
+    tap((response) => {
+    this.currentUser.set(response)
+    this.isAuth.set(true)
+    }),
+    catchError((error: any) => {
+    this.isAuth.set(false)
+    this.currentUser.set(null)
+    return of (null)
+    })
+    )
+    }
+
+    getEmployee():Observable<User | null>  {
+      if(!this.getToken('access')) {
+      return of(null);
+      }
+      return this.http.get <User>(`${this.userPath}/employee-panel`).pipe (
+      
+      
+        tap((response) => {
+      this.currentUser.set(response)
+      this.isAuth.set(true)
+      }),
+      catchError((error: any) => {
+      this.isAuth.set(false)
+      this.currentUser.set(null)
+      return of (null)
+      })
+      )
+      }
+
+   
+   findAllUsers(): Observable<User[]> {
+   return this.http.get<User[]>(`${this.userPath}/users-lists`)
+   }
+
+  deleteUser (id: string): Observable<void> {
+   return this.http.delete<void>(`${this.userPath}/${id}`);
+  }
+
+  updateUser (id : string, user : Partial <User>):Observable <User> {
+  return this.http.patch<User>(`${this.userPath}/${id}`, user);
+  }
+
+
+
+
 refreshToken () {
 const refreshToken = this.getToken('refresh')
 return this.http

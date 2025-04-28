@@ -26,6 +26,13 @@ import { WishlistComponent } from './component/wishlist/wishlist.component';
 import { profileRoutes } from './component/profile/profile.routes';
 import { EditProfileComponent } from './component/edit-profile/edit-profile.component';
 import { CheckoutComponent } from './component/checkout/checkout.component';
+import { AdminPanelComponent } from './component/admin-panel/admin-panel.component';
+import { BooksListComponent } from './component/books-list/books-list.component';
+import { DeliveriesListsComponent } from './component/deliveries-lists/deliveries-lists.component';
+import { UserListsComponent } from './component/user-lists/user-lists.component';
+import { OrdersListsComponent } from './component/orders-lists/orders-lists.component';
+import { EmployeePanelComponent } from './component/employee-panel/employee-panel.component'; 
+import { EmployeesListComponent } from './component/employees-list/employees-list.component';
 
 
 
@@ -54,6 +61,12 @@ export const routes: Routes = [
 {path : 'wishlist', component: WishlistComponent},
 {path: 'checkout', component: CheckoutComponent},
 {path: 'edit-profile', component: EditProfileComponent},
-
+{path: 'admin-panel', component: AdminPanelComponent},
+{path : 'books-lists', component: BooksListComponent},
+{path :  'deliveries-lists', component: DeliveriesListsComponent},
+{path : 'users-lists', component: UserListsComponent}, 
+{path : 'orders-lists', component: OrdersListsComponent},
+{path : 'employee-panel', component : EmployeePanelComponent}, 
+{path : 'employees-list', component : EmployeesListComponent}
 ];
 

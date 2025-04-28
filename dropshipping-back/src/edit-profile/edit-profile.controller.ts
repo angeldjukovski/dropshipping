@@ -24,7 +24,7 @@ return this.editProfileService.getUser(id)
 
 
 @Put ()
-async editDelivery (@GetUser() user , @Body() editUserDTO : UserEditDTO): Promise <UserDocument> {
+async editUser (@GetUser() user , @Body() editUserDTO : UserEditDTO): Promise <UserDocument> {
 const id = user.sub 
 if (!id) {
 throw new UnauthorizedException("User not authenticated");

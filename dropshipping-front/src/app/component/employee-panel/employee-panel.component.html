@@ -1,0 +1,77 @@
+
+<div class="profile">
+    <div class="card">
+    <h3>Personal Employee Infromation</h3>
+    <p><strong>First Name:{{user?.firstName}}</strong></p>
+    <p><strong>Last Name:{{user?.lastName}}</strong></p>
+    <p><strong>Email:{{user?.email}}</strong></p>
+    <button mat-raised-button color="primary" type="submit" class="button1" (click)="editProfile()">Edit Account</button>
+    <button mat-raised-button color="primary" type="submit" class="button2" (click)="changePassword()">Change Password</button>
+    </div>
+    </div>
+
+          <h1>Orders List</h1>
+          
+          <mat-form-field>
+              <mat-label>Search Orders</mat-label>
+              <input  matInput (keyup)="applyFilter($event)" placeholder="Search Orders">
+          </mat-form-field>
+      
+          <mat-paginator [pageSize]="10" [pageSizeOptions]="[10,20,50]" showFirstLastButtons></mat-paginator> 
+          
+            <mat-table *ngIf="user && displayColumn.length" [dataSource]="dataSource" class="mat-elevation-z8"> 
+      
+             <ng-container matColumnDef="userId">
+              <th mat-header-cell *matHeaderCellDef>Username</th>
+              <td mat-cell *matCellDef="let product">{{product.userId}}</td>
+             </ng-container> 
+
+             <ng-container matColumnDef="items">
+              <th mat-header-cell *matHeaderCellDef>Items</th>
+              <td mat-cell *matCellDef="let product">{{product.items}}</td>
+             </ng-container>
+
+             <ng-container matColumnDef="title">
+              <th mat-header-cell *matHeaderCellDef>Title</th>
+              <td mat-cell *matCellDef="let product">
+                <div *ngFor="let item of product.item">{{item.title}}x{{item.quantity}}</div>
+              </td>
+             </ng-container>
+
+             <ng-container matColumnDef="totalPrice">
+              <th mat-header-cell *matHeaderCellDef>Total Price</th>
+              <td mat-cell *matCellDef="let product">{{product.totalPrice}}</td>
+             </ng-container>  
+
+             <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef>Status</th>
+              <td mat-cell *matCellDef="let product">{{product.status}}</td>
+             </ng-container>
+
+             <ng-container matColumnDef="assign">
+              <th mat-header-cell *matHeaderCellDef>Assigned To</th>
+               <td mat-cell *matCellDef="let product">
+                  {{ product.assignedTo || 'Unassigned' }}
+               </td>
+            </ng-container>
+             
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef>Acions</th>
+              <td mat-cell *matCellDef="let product">
+                <button mat-button color="accent" (click)="updateStatus(product._id, 'taken')">Mark Taken</button>
+                <button mat-button color="warn" (click)="updateStatus(product._id, 'delivered')">Mark Delivered</button>
+              </td>
+             </ng-container>
+      
+                
+      
+              <tr mat-header-row *matHeaderRowDef="displayColumn"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayColumn;"></tr>
+  
+  
+  
+                </mat-table>
+        
+
+        
+        

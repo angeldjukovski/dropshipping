@@ -1,3 +1,13 @@
+h1 {
+font-family: 'Times New Roman', Times, serif;
+}
+p {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+
+
+
 .book_container {
   display: flex;
   justify-content: center;
@@ -7,10 +17,28 @@
 
 .example-card {
   max-width: 400px;
-  background-color: rgb(227, 227, 227);
+  background-color: whitesmoke
 }
 
 .book-card-image {
   max-height: 300px;
   object-fit: cover;
 }
+
+mat-icon {
+color: red;
+}
+
+.snack-bar-sucess {
+  background-color: lightblue;
+  color: white ;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  }
+  
+  .snack-bar-faliure {
+  background-color: rgb(206, 54, 12);
+  color : white; 
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  }

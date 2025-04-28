@@ -1,38 +1,76 @@
-.pagination {
-margin :0
+.filter_container {
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-wrap: wrap;
+margin : 10px 0; 
+padding: 10px;
+background-color: white;
+
 }
 
-.page-item {
-display: inline-block
+.sort_container {
+flex: 0 0 auto
 }
+
+.sort-select {
+padding : 8px 12px ;
+font-size : 16px;
+border-radius: 8px;
+border: 1px solid #ccc ;
+outline : none;
+background-color: white;
+color : black; 
+appearance: none;
+cursor: pointer; 
+
+& :hover {
+border-color: #066fd1;
+background-color: aliceblue;
+}
+&:focus {
+  border-color: #066fd1;
+  box-shadow: 0 0 5px rgba(6, 111, 209, 0.5);
+}
+}
+
+.paginaton_container {
+flex : 1 ;
+display : flex ;
+justify-content: flex-end;
+}
+
+
 
 .page-link {
-color: white;
-background-color:  #066fd1;
-border : 1px solid ;
-font-size: 1.2em;
-padding: 0.5em 1em;
+  color: white;
+  background-color: #066fd1;
+  border: 1px solid;
+  font-size: 1.2em;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  transition: all 0.3s ease;
 }
 
 .page-link:hover,
 .page-link:focus {
   color: #0056b3;
-  text-decoration: none;
   background-color: #e9ecef;
   border-color: #dee2e6;
 }
 
 .page-item.disabled .page-link {
-color: #6c757d;
-pointer-events: none;
-cursor: auto;
-background-color: #fff;
-border-color: #dee2e6;
+  color: #6c757d;
+  background-color: #fff;
+  border-color: #dee2e6;
+  pointer-events: none;
 }
 
 .page-item.active .page-link {
-z-index: 1;
-color: #fff;
-background-color: #007bff;
-border-color: #007bff;
+  z-index: 1;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
 }
+  
+ 

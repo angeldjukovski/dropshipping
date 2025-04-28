@@ -20,6 +20,11 @@ this.pageModel.countDocuments(pagination).exec(),
 return {books,total}
 }
 
+async moveAdminPage (page : number, limit : number) {
+	const skip = (page - 1) * limit;
+	return this.pageModel.find().skip(skip).limit(limit).exec();
+}
+
 
 
 async filterDiscount(discount: boolean) {

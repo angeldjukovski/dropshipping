@@ -1,108 +1,135 @@
 .profile_container {
-display: flex;
-justify-content: flex-start;
-justify-content: flex-start;
-gap: 20px;
-padding : 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+ 
+  .sidenav {
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0;
+  }
+  
+  .sidenav h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: #3f51b5;
+  }
+  
+  .username {
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .sidenav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidenav ul li {
+    margin-bottom: 16px;
+  }
+  
+  .sidenav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+  }
+  
+  .sidenav ul li a:hover {
+    color: #3f51b5;
+  }
+  
 
-
- }
-
-
-
-.sidenav {
-display: flex;
-flex-direction: column;
-width: 250px;
-position: relative;
-background-color: white;
-justify-content: flex-start;
-padding: 20px;
-border-radius: 8px;
-box-shadow: black;
-border: solid 1px black;
-}
-
-.username {
-font-weight: bold;
-margin-bottom: 1rem;
-}
-
-.sidenar ul {
-list-style: none;
-padding: 0;
-}
-
-.sidenav li ul {
-margin : 10px 0;
-}
-
-.sidenav ul li a {
-text-decoration: none;
-color: black;
-font-size: 1.2rem;
-}
-
-.sidenav ul li a:hover {
-color :aqua
-}
-
-
-h2 {
-font-size: 1.5rem;
-margin-bottom: 1rem;
-
-}
-h3{
-font-size: 1.8rem;
- margin-bottom: 1rem;
-}
-
-
-.profile {
-flex: 2;
-display: flex;
-justify-content: center;
-padding: 2rem;
-border-radius: 10px;
-box-shadow: black;
-}
-
-.card {
-background-color: white; 
-padding: 20px;
-border-radius: 8px;
-box-shadow: black;
-width: 400px;
-text-align: left;
-}
-
-.card p {
-font-size: 1.2rem;
-margin: 0.5rem 0;
-}
-
-.button1 {
-    width: 50%;
-    gap: 50px;
+  .profile {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 450px;
+  }
+  
+  .card h3 {
+    font-size: 1.8rem;
+    color: #3f51b5;
+    margin-bottom: 1rem;
+  }
+  
+  .card p {
+    font-size: 1.1rem;
+    margin: 0.7rem 0;
+    color: #555;
+  }
+  
+ 
+  .button1,
+  .button2 {
+    width: 100%;
     padding: 12px;
-    background-color: blue;
+    background-color: #3f51b5;
     color: white;
     border: none;
-    border-radius:4px;
+    border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
+    margin-top: 1rem;
     transition: background-color 0.3s ease;
-    }
+  }
+  
+  .button1:hover,
+  .button2:hover {
+    background-color: #303f9f;
+  }
+  
+  .button3 {
+    width: 100%;
+    padding: 12px;
+    background-color: #e53935;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button3:hover {
+    background-color: #c62828;
+  }
+  
 
-.button2 {
-width: 50%;
-padding: 12px;
-background-color: blue;
-color: white;
-border: none;
-border-radius:4px;
-font-size: 16px;
-cursor: pointer;
-transition: background-color 0.3s ease;
-}
+  @media (max-width: 768px) {
+    .profile_container {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .sidenav {
+      width: 100%;
+    }
+    
+    .profile {
+      width: 100%;
+      padding: 1rem;
+    }
+  }
+  

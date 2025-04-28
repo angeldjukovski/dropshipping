@@ -1,51 +1,71 @@
+<div class="page_layout">
+  <div class="sidenav">
+  <h2>Account Details Of</h2>
+  <p class="username">{{userId}}</p>
+  <ul>
+  <li><a routerLink="/profile">Your Profile</a></li>
+  <li><a routerLink="/orders" >Your Orders</a></li>
+  <li><a routerLink="/wishlist">Wishlist</a></li>
+  </ul>
+</div>
+</div>
+
+
+
+
+
+
+
+
 <div class="delivery_container">
-    <form [formGroup]="deliveryForm" (ngSubmit)="onSubmit()">
-        <div class="delivery-form">
-          <h1>Delivery-Form</h1>
-          <div class="id">
-          <label for="userId">Username:</label>
-          <input type="text" id="id" name="id" formControlName = 'userId' placeholder="Enter Your Username">
-          </div>
-          <div class="name">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" formControlName = 'name' placeholder="Enter Your Name">
-          </div>
-          <div class="email">
-        <label for="email">Email:</label>
-        <input type="text" id="email" formControlName ='email' placeholder ="Enter Your Email">
-      </div>
-      <div class="phonenumber">
-        <label for="phonenumber" type ='number' class="input" >Phone Number:</label>
-        <input type="tel" id="phonenumber" name="phonenumber" formControlName="phoneNumber" placeholder="Enter Your Phone Number">
-      </div>
-      <div class="address">
-        <label for="address" type = 'text' class="input">Address:</label>
-        <input type="text" id="address" name="address" formControlName="address" placeholder="Enter Your Address">
-      </div>
-      <div class="zipcode">
-        <label for="zipcode" type = 'text' class="input">Zipcode</label>
-        <input type="text" id="zipcode" name="zipcode" formControlName="zipcode" placeholder="Enter Your Zipcode">
-      </div>
-      <div class="day">
-      <label for="day">Choose a delivery day:</label>
-      <select name="weekday" id="week" formControlName = 'deliveryDay'>
-      <option value="Monday">Monday</option>
-      <option value="Tuesday">Tuesday</option>
-      <option value="Wednesday">Wednesday</option>
-      <option value="Thursday">Thursday</option>
-      <option value="Friday">Friday</option>
+  <form [formGroup]="deliveryForm" (ngSubmit)="onSubmit()">
+      <div class="delivery-form">
+        <h1>Delivery-Form</h1>
+        <div class="id">
+        <label for="userId">Username:</label>
+        <input type="text" id="id" name="id" formControlName = 'userId' placeholder="Enter Your Username">
+        </div>
+        <div class="name">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" formControlName = 'name' placeholder="Enter Your Name">
+        </div>
+        <div class="email">
+      <label for="email">Email:</label>
+      <input type="text" id="email" formControlName ='email' placeholder ="Enter Your Email">
+    </div>
+    <div class="phonenumber">
+      <label for="phonenumber" type ='number' class="input" >Phone Number:</label>
+      <input type="tel" id="phonenumber" name="phonenumber" formControlName="phoneNumber" placeholder="Enter Your Phone Number">
+    </div>
+    <div class="address">
+      <label for="address" type = 'text' class="input">Address:</label>
+      <input type="text" id="address" name="address" formControlName="address" placeholder="Enter Your Address">
+    </div>
+    <div class="zipcode">
+      <label for="zipcode" type = 'text' class="input">Zipcode</label>
+      <input type="text" id="zipcode" name="zipcode" formControlName="zipcode" placeholder="Enter Your Zipcode">
+    </div>
+    <div class="day">
+    <label for="day">Choose a delivery day:</label>
+    <select name="weekday" id="week" formControlName = 'deliveryDay'>
+    <option value="Monday">Monday</option>
+    <option value="Tuesday">Tuesday</option>
+    <option value="Wednesday">Wednesday</option>
+    <option value="Thursday">Thursday</option>
+    <option value="Friday">Friday</option>
+  </select>
+    </div>
+    <div class="location">
+      <label for="location">Choose a Location:</label>
+      <select name="location" id="location" formControlName = 'deliveryLocation'>
+      <option value="North America">North America</option>
+      <option value="Western Europe">Western Europe</option>
+      <option value="Eastern Europe">Eastern Europe</option>
     </select>
       </div>
-      <div class="location">
-        <label for="location">Choose a Location:</label>
-        <select name="location" id="location" formControlName = 'deliveryLocation'>
-        <option value="North America">North America</option>
-        <option value="Western Europe">Western Europe</option>
-        <option value="Eastern Europe">Eastern Europe</option>
-      </select>
-        </div>
-      <button mat-raised-button color="primary" type="submit" >Submit</button>
-      <button mat-raised-button color = 'accent' type = button (click)="onUpdate()">Update Delivery</button>
-    </div>
-    </form>
+    <button mat-raised-button color="primary" type="submit" >Submit</button>
+    <button mat-raised-button color = 'accent' type = button (click)="onUpdate()">Update Delivery</button>
   </div>
+  </form>
+</div>
+

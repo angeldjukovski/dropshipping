@@ -30,6 +30,6 @@ password: string;
 @IsEnum(UserRole)
 @IsOptional()
 @ApiProperty({description: 'Role is optional'})
-role: UserRole = UserRole.Costumer
+role: UserRole = UserRole.Customer
 
 }

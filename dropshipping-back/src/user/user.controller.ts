@@ -29,18 +29,36 @@ return this.userService.create(createUserDTO)
 }
 
 @Role([UserRole.Admin],RoleValidatorType.HasAllOfThese)
-@Get()
+@Get('/users-lists')
 findall () {
 return this.userService.findAll()
 }
 
-@Role([UserRole.Costumer, UserRole.Admin, UserRole.Employee],RoleValidatorType.HasSomeOfThese)
+@Role([UserRole.Customer, UserRole.Admin, UserRole.Employee],RoleValidatorType.HasSomeOfThese)
 @Get('/profile')
 async findme(@GetUser() user: CurrentUser):Promise <User> {
 console.log("Get User:", user);
 const userResponse = await this.userService.findByEmail(user.email)
 return plainToInstance(User, userResponse[0])
 }
+
+@Role([UserRole.Admin ],RoleValidatorType.HasAllOfThese)
+@Get('/admin-panel')
+async findAdmin(@GetUser() user: CurrentUser):Promise <User> {
+console.log("Get User:", user);
+const userResponse = await this.userService.findByEmail(user.email)
+return plainToInstance(User, userResponse[0])
+}
+
+@Role([UserRole.Employee ],RoleValidatorType.HasAllOfThese)
+@Get('/employee-panel')
+async findEmployee(@GetUser() user: CurrentUser):Promise <User> {
+console.log("Get User:", user);
+const userResponse = await this.userService.findByEmail(user.email)
+return plainToInstance(User, userResponse[0])
+}
+
+
 
 @Role ([UserRole.Admin],RoleValidatorType.HasAllOfThese)
 @Get(':id')
@@ -49,7 +67,7 @@ return this.userService.findOneById(id)
 }
 
 @Role([UserRole.Admin], RoleValidatorType.HasAllOfThese) 
-@Patch(':id')
+@Patch('/:id')
 updateUser (@Param ('id') id: string, @Body() updateUserDto : UpdateUserDTO) {
 return this.userService.updateUser(id, updateUserDto)
 }
@@ -61,7 +79,7 @@ return this.userService.updateUserRole(id,updateUserRole)
 }
 
 @Role([UserRole.Admin],RoleValidatorType.HasAllOfThese)
-@Delete(':id')
+@Delete('/:id')
 delete(@Param('id') id: string) {
 return this.userService.delete(id)
 }
